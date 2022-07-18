@@ -1,0 +1,23 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="../jooj.js"></script>
+    </head>
+
+    <body>
+
+        <h1>Oi!</h1>
+
+        <form action="../controllers/clientController.php?action=1" method="post">
+            <input type="text" placeholder="Nome" id="nome" name="nome"><br><br>
+            <input placeholder="E-mail" name="email"><br><br>
+            <input placeholder="Senha" name="pass"><br><br>
+            <input placeholder="Brazil" readonly="true"><br><br>
+            <input type="submit" value="Cadastrar!">
+        </form>
+
+        <button type="button" onclick="Redirect()">Ir para login</button>
+
+    </body>
+</html>

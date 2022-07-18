@@ -6,6 +6,7 @@
 
         public $name;
         public $email;
+        public $pass;
         public $country;
 
         public function __construct()
@@ -15,11 +16,21 @@
 
         public function insertClient(){
             $db = new database();
-            $db->command("insert into person values(' ".$this->name."','".$this->email."','".$this->country."');");
+            $db->executeCommand("insert into person values(' ".$this->name."','".$this->email."', '".
+            $this -> pass."', '".$this->country."');");
         }
 
-        public function Test(){
-            echo $this -> name;
+        public function Login(){
+            $db = new database();
+            if($db->returnCommand("select * from person where email = '". $this->email."' and password = '".
+            $this->pass ."';") != 0)
+            {
+                echo "Login realizado!";
+            }
+            else
+            {
+                echo "Falha no login!";
+            }
         }
     }
 

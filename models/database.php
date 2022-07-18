@@ -12,20 +12,28 @@
             $conn = mysqli_connect(hostname, user, password, database);
             
             if(!$conn)
-                die("Não deu certo!" + mysqli_connect_error());
+                die("Erro na conexão!" + mysqli_connect_error());
             else{
-                
+                return $conn;
             }
-                //echo "Conectou";
-
-            return $conn;
         }
 
-        public function command($query)
+        public function executeCommand($query)
         {            
             $connection = $this -> connection();
             mysqli_query($connection, $query);
             mysqli_close($connection);
+        }
+
+        public function returnCommand($query)
+        {
+            $connection = $this -> connection();
+            $data = mysqli_query($connection,$query);
+            //$array = mysqli_fetch_assoc($data);
+            $rows = mysqli_num_rows($data);
+            mysqli_close($connection);
+
+            return $rows;
         }
     }
 
